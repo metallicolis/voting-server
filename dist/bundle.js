@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "79701dcc79967be18b6d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4b13b3c33b79ce0bce44"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -34275,7 +34275,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var pair = _immutable.List.of('Trainspotting', '28 Days Later');
-	var tally = (0, _immutable.Map)({ 'Transpotting': 5, '28 Days Later': 4 });
+	var tally = (0, _immutable.Map)({ 'Trainspotting': 5, '28 Days Later': 4 });
 
 	exports.default = _react2.default.createClass({
 	    displayName: 'App',
@@ -39646,6 +39646,10 @@
 
 	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
+	var _Winner = __webpack_require__(288);
+
+	var _Winner2 = _interopRequireDefault(_Winner);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
@@ -39667,25 +39671,38 @@
 	    render: function render() {
 	        var _this = this;
 
-	        return _react2.default.createElement(
+	        return this.props.winner ? _react2.default.createElement(_Winner2.default, { ref: 'winner', winner: this.props.winner }) : _react2.default.createElement(
 	            'div',
 	            { className: 'results' },
-	            this.getPair().map(function (entry) {
-	                return _react2.default.createElement(
-	                    'div',
-	                    { key: entry, className: 'entry' },
-	                    _react2.default.createElement(
-	                        'h1',
-	                        null,
-	                        entry
-	                    ),
-	                    _react2.default.createElement(
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'tally' },
+	                this.getPair().map(function (entry) {
+	                    return _react2.default.createElement(
 	                        'div',
-	                        { className: 'voteCount' },
-	                        _this.getVotes(entry)
-	                    )
-	                );
-	            })
+	                        { key: entry, className: 'entry' },
+	                        _react2.default.createElement(
+	                            'h1',
+	                            null,
+	                            entry
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'voteCount' },
+	                            _this.getVotes(entry)
+	                        )
+	                    );
+	                })
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                { className: 'management' },
+	                _react2.default.createElement(
+	                    'button',
+	                    { ref: 'next', className: 'next', onClick: this.props.next },
+	                    'Next'
+	                )
+	            )
 	        );
 	    }
 	});
